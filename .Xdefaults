@@ -5,3 +5,5 @@ URxvt.font: xft:Mono:size=12
 URxvt*depth: 32
 URxvt.saveLines: 100000
 URxvt.internalBorder:  10
+
+#Xft.dpi: 190

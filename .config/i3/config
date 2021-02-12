@@ -16,9 +16,10 @@ font xft:Monospace 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start applications
+# Start applications
 bindsym $mod+Return exec --no-startup-id rxvt-unicode
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+semicolon --no-startup-id i3lock -efc 000000
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -63,6 +64,10 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# Splits
+bindsym $mod+z split h
+bindsym $mod+Shift+z split v
 
 # Class                 border  backgr. text    indicator child_border
 client.focused          #ffffff #ffffff #ffffff #ffffff   #ffffff
