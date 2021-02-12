@@ -1,3 +1,3 @@
 # dotfiles
 
-Config files
+Config files for Debian based distros
