@@ -1,0 +1,161 @@
+# Definitions
+set $mod Mod4
+set $w1 workspace 1
+set $w2 workspace 2
+set $w3 workspace 3
+set $w4 workspace 4
+set $w5 workspace 5
+set $w6 workspace 6
+set $w7 workspace 7
+set $w8 workspace 8
+set $w9 workspace 9
+set $w10 workspace 10
+
+font xft:Monospace 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start applications
+bindsym $mod+Return exec --no-startup-id rxvt-unicode
+bindsym $mod+d exec --no-startup-id rofi -show run
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left 100
+bindsym $mod+Shift+j move down 100
+bindsym $mod+Shift+k move up 100
+bindsym $mod+Shift+l move right 100
+
+bindsym $mod+control+h move left
+bindsym $mod+control+j move down
+bindsym $mod+control+k move up
+bindsym $mod+control+l move right
+
+bindsym $mod+Shift+Left move left 100
+bindsym $mod+Shift+Down move down 100
+bindsym $mod+Shift+Up move up 100
+bindsym $mod+Shift+Right move right 100
+
+bindsym $mod+control+Left move left
+bindsym $mod+control+Down move down 
+bindsym $mod+control+Up move up 
+bindsym $mod+control+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Class                 border  backgr. text    indicator child_border
+client.focused          #ffffff #ffffff #ffffff #ffffff   #ffffff
+client.focused_inactive #202020 #202020 #ffffff #202020   #202020
+client.unfocused        #202020 #202020 #ffffff #202020   #202020
+client.urgent           #202020 #202020 #FF0000 #202020   #202020
+client.placeholder      #202020 #202020 #ffffff #202020   #202020
+
+# switch to workspace
+bindsym $mod+1 $w1
+bindsym $mod+2 $w2
+bindsym $mod+3 $w3
+bindsym $mod+4 $w4
+bindsym $mod+5 $w5
+bindsym $mod+6 $w6
+bindsym $mod+7 $w7
+bindsym $mod+8 $w8
+bindsym $mod+9 $w9
+bindsym $mod+0 $w10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to $w1
+bindsym $mod+Shift+2 move container to $w2
+bindsym $mod+Shift+3 move container to $w3
+bindsym $mod+Shift+4 move container to $w4
+bindsym $mod+Shift+5 move container to $w5
+bindsym $mod+Shift+6 move container to $w6
+bindsym $mod+Shift+7 move container to $w7
+bindsym $mod+Shift+8 move container to $w8
+bindsym $mod+Shift+9 move container to $w9
+bindsym $mod+Shift+0 move container to $w10
+
+# reload i3 config
+bindsym $mod+Shift+c reload
+
+# restart i3
+bindsym $mod+Shift+r restart
+
+# resize window 
+mode "resize" {
+
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+	bindsym Shift+h resize shrink width 100 px or 100 ppt
+        bindsym Shift+k resize grow height 100 px or 100 ppt
+        bindsym Shift+j resize shrink height 60 px or 100 ppt
+        bindsym Shift+l resize grow width 100 px or 100 ppt
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+	
+	bindsym Shift+Left resize shrink width 100 px or 100 ppt
+        bindsym Shift+Up resize grow height 100 px or 100 ppt
+        bindsym Shift+Down resize shrink height 100 px or 100 ppt
+        bindsym Shift+Right resize grow width 100 px or 100 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+ 
+bindsym $mod+r mode "resize"
+
+# i3bar
+bar {
+        status_command i3status
+	position top		
+	colors {
+		background 		#000000 
+		separator	 	#FFFFFF #FFFFFF #FFFFFF
+   		focused_workspace  	#0088CC #0088CC #FFFFFF
+		active_workspace	#000000 #101010 #FFFFFF	
+		inactive_workspace 	#000000 #000000 #AAAAAA 
+		urgent_workspace 	#202020 #202020 #FF0000
+	}
+}
+
+# Startup only
+exec --no-startup-id nm-applet
+exec --no-startup-id unclutter
+exec --no-startup-id dunst
+exec --no-startup-id i3status
+exec --no-startup-id xsetroot -solid '#000000'
+
+# window borders
+for_window [class="^.*"] border pixel 2	 
+
+# Force floating windows on certain windows
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
+for_window [class="Tor Browser"] floating enable
