@@ -19,7 +19,7 @@ floating_modifier $mod
 # Start applications
 bindsym $mod+Return exec --no-startup-id rxvt-unicode
 bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+semicolon --no-startup-id i3lock -efc 000000
+bindsym $mod+semicolon exec --no-startup-id i3lock -efc 000000
 
 # kill focused window
 bindsym $mod+Shift+q kill
